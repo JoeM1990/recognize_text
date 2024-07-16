@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:recognize_text/views/auth/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -18,10 +19,10 @@ class SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    // Timer(
-    //     const Duration(seconds: 4),
-    //     () => Navigator.pushReplacement(
-    //         context, MaterialPageRoute(builder: (context) => Login())));
+    Timer(
+        const Duration(seconds: 4),
+        () => Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const LoginScreen())));
   }
 
   @override

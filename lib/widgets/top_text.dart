@@ -1,4 +1,8 @@
+// ignore_for_file: use_super_parameters
+
 import 'package:flutter/material.dart';
+import 'package:recognize_text/animations/change_screen_animation.dart';
+import 'package:recognize_text/utils/helper_functions.dart';
 
 import 'login_content.dart';
 
