@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, file_names, avoid_unnecessary_containers
+// ignore_for_file: use_key_in_widget_constructors, file_names, avoid_unnecessary_containers, unused_import
 
 import 'dart:async';
 
@@ -12,8 +12,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class SplashScreenState extends State<SplashScreen> {
-  bool checkNet = false;
-
   bool getStatusUser = true;
 
   @override
@@ -35,17 +33,9 @@ class SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         child: const Column(
-          //crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              height: 170.0,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [Text("Recognize Text")],
-            )
-          ],
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [Text("Recognize Text")],
         ),
       ),
     );
