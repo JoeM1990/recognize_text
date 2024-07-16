@@ -1,4 +1,11 @@
+// ignore_for_file: use_super_parameters
+
 import 'package:flutter/material.dart';
+import 'package:recognize_text/animations/change_screen_animation.dart';
+import 'package:recognize_text/utils/constants.dart';
+import 'package:recognize_text/utils/helper_functions.dart';
+import 'package:recognize_text/widgets/bottom_text.dart';
+import 'package:recognize_text/widgets/top_text.dart';
 
 enum Screens {
   createAccount,
@@ -52,8 +59,8 @@ class _LoginContentState extends State<LoginContent>
         onPressed: () {},
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 14),
+          backgroundColor: kSecondaryColor,
           shape: const StadiumBorder(),
-          primary: kSecondaryColor,
           elevation: 8,
           shadowColor: Colors.black87,
         ),
@@ -134,7 +141,6 @@ class _LoginContentState extends State<LoginContent>
   @override
   void initState() {
     createAccountContent = [
-      inputField('Name', Ionicons.person_outline),
       inputField('Email', Ionicons.mail_outline),
       inputField('Password', Ionicons.lock_closed_outline),
       loginButton('Sign Up'),
