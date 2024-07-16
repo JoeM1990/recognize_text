@@ -13,8 +13,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class SplashScreenState extends State<SplashScreen> {
-  bool getStatusUser = true;
-
   @override
   void initState() {
     super.initState();
@@ -36,7 +34,7 @@ class SplashScreenState extends State<SplashScreen> {
         child: const Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text("Recognize Text")],
+          children: [Text("Recognize-Text")],
         ),
       ),
     );
