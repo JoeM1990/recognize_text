@@ -1,4 +1,9 @@
+// ignore_for_file: use_super_parameters
+
 import 'package:flutter/material.dart';
+import 'package:recognize_text/animations/change_screen_animation.dart';
+import 'package:recognize_text/utils/helper_functions.dart';
+import 'package:recognize_text/widgets/login_content.dart';
 
 class BottomText extends StatefulWidget {
   const BottomText({Key? key}) : super(key: key);
