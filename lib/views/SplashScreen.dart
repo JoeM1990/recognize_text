@@ -18,7 +18,7 @@ class SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Timer(
-        const Duration(seconds: 4),
+        const Duration(seconds: 3),
         () => Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const LoginScreen())));
   }
@@ -34,7 +34,15 @@ class SplashScreenState extends State<SplashScreen> {
         child: const Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text("Recognize-Text")],
+          children: [
+            Center(
+              child: Text(
+                "Recognize-Text",
+                style: TextStyle(color: Colors.white, fontSize: 30),
+                textAlign: TextAlign.center,
+              ),
+            )
+          ],
         ),
       ),
     );
