@@ -1,6 +1,8 @@
 // ignore_for_file: use_super_parameters
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:recognize_text/animations/change_screen_animation.dart';
 import 'package:recognize_text/utils/constants.dart';
@@ -28,7 +30,10 @@ class _LoginContentState extends State<LoginContent>
   late final List<Widget> createAccountContent;
   late final List<Widget> loginContent;
 
-  Widget inputField(String hint, IconData iconData, bool state) {
+  TextEditingController username = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+  Widget inputFieldUsername(String hint, IconData iconData, bool state) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 8),
       child: SizedBox(
@@ -39,6 +44,37 @@ class _LoginContentState extends State<LoginContent>
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(30),
           child: TextField(
+            controller: username,
+            obscureText: state,
+            textAlignVertical: TextAlignVertical.bottom,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30),
+                borderSide: BorderSide.none,
+              ),
+              filled: true,
+              fillColor: Colors.white,
+              hintText: hint,
+              prefixIcon: Icon(iconData),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget inputFieldPassword(String hint, IconData iconData, bool state) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 8),
+      child: SizedBox(
+        height: 50,
+        child: Material(
+          elevation: 8,
+          shadowColor: Colors.black87,
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(30),
+          child: TextField(
+            controller: password,
             obscureText: state,
             textAlignVertical: TextAlignVertical.bottom,
             decoration: InputDecoration(
@@ -58,6 +94,30 @@ class _LoginContentState extends State<LoginContent>
   }
 
   Widget loginButton(String title) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
+      child: ElevatedButton(
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(vertical: 14),
+          backgroundColor: kSecondaryColor,
+          shape: const StadiumBorder(),
+          elevation: 8,
+          shadowColor: Colors.black87,
+        ),
+        child: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget createButton(String title) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
       child: ElevatedButton(
@@ -147,9 +207,9 @@ class _LoginContentState extends State<LoginContent>
   @override
   void initState() {
     createAccountContent = [
-      inputField('Email', Ionicons.mail_outline, false),
-      inputField('Password', Ionicons.lock_closed_outline, true),
-      loginButton(
+      inputFieldUsername('Email', Ionicons.mail_outline, false),
+      inputFieldPassword('Password', Ionicons.lock_closed_outline, true),
+      createButton(
         'Commencer',
       ),
       orDivider(),
@@ -157,8 +217,8 @@ class _LoginContentState extends State<LoginContent>
     ];
 
     loginContent = [
-      inputField('Email', Ionicons.mail_outline, false),
-      inputField('Password', Ionicons.lock_closed_outline, true),
+      inputFieldUsername('Email', Ionicons.mail_outline, false),
+      inputFieldPassword('Password', Ionicons.lock_closed_outline, true),
       loginButton('Se Connecter'),
       forgotPassword(),
     ];
