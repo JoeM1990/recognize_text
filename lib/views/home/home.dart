@@ -125,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
       numberOfBars: 8,
       size: 0.20,
       backgroundColor: Colors.transparent,
-      barStyle: BarStyle.dash,
+      barStyle: BarStyle.solid,
       roundBars: false,
       colors: const [
         Colors.red,
