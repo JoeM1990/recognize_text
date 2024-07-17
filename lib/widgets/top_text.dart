@@ -31,8 +31,8 @@ class _TopTextState extends State<TopText> {
       animation: ChangeScreenAnimation.topTextAnimation,
       child: Text(
         ChangeScreenAnimation.currentScreen == Screens.createAccount
-            ? 'Create\nAccount'
-            : 'Welcome\nBack',
+            ? 'Nouveau\nCompte'
+            : 'Bienvenue\n',
         style: const TextStyle(
           fontSize: 40,
           fontWeight: FontWeight.w600,
