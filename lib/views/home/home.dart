@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget centerText() {
     return Text(
-      isDark ? 'Good\nNight' : 'Good\nMorning',
+      isDark ? 'Parler...\n' : 'Toucher pour\nParler',
       textAlign: TextAlign.center,
       style: TextStyle(
         fontFamily: 'Montserrat',
