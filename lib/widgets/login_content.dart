@@ -14,7 +14,10 @@ enum Screens {
 }
 
 class LoginContent extends StatefulWidget {
-  const LoginContent({Key? key}) : super(key: key);
+  const LoginContent({Key? key})
+      : super(
+          key: key,
+        );
 
   @override
   State<LoginContent> createState() => _LoginContentState();
@@ -146,7 +149,9 @@ class _LoginContentState extends State<LoginContent>
     createAccountContent = [
       inputField('Email', Ionicons.mail_outline, false),
       inputField('Password', Ionicons.lock_closed_outline, true),
-      loginButton('Commencer'),
+      loginButton(
+        'Commencer',
+      ),
       orDivider(),
       logos(),
     ];
