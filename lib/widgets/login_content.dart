@@ -128,7 +128,7 @@ class _LoginContentState extends State<LoginContent>
       child: TextButton(
         onPressed: () {},
         child: const Text(
-          'Forgot Password?',
+          'Mot de passe oublié?',
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
@@ -144,7 +144,7 @@ class _LoginContentState extends State<LoginContent>
     createAccountContent = [
       inputField('Email', Ionicons.mail_outline),
       inputField('Password', Ionicons.lock_closed_outline),
-      loginButton('Sign Up'),
+      loginButton('Commencer'),
       orDivider(),
       logos(),
     ];
@@ -152,7 +152,7 @@ class _LoginContentState extends State<LoginContent>
     loginContent = [
       inputField('Email', Ionicons.mail_outline),
       inputField('Password', Ionicons.lock_closed_outline),
-      loginButton('Log In'),
+      loginButton('Se Connecter'),
       forgotPassword(),
     ];
 
