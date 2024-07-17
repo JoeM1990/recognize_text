@@ -25,7 +25,7 @@ class _LoginContentState extends State<LoginContent>
   late final List<Widget> createAccountContent;
   late final List<Widget> loginContent;
 
-  Widget inputField(String hint, IconData iconData) {
+  Widget inputField(String hint, IconData iconData, bool state) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 8),
       child: SizedBox(
@@ -36,6 +36,7 @@ class _LoginContentState extends State<LoginContent>
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(30),
           child: TextField(
+            obscureText: state,
             textAlignVertical: TextAlignVertical.bottom,
             decoration: InputDecoration(
               border: OutlineInputBorder(
@@ -68,6 +69,7 @@ class _LoginContentState extends State<LoginContent>
         child: Text(
           title,
           style: const TextStyle(
+            color: Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -142,16 +144,16 @@ class _LoginContentState extends State<LoginContent>
   @override
   void initState() {
     createAccountContent = [
-      inputField('Email', Ionicons.mail_outline),
-      inputField('Password', Ionicons.lock_closed_outline),
+      inputField('Email', Ionicons.mail_outline, false),
+      inputField('Password', Ionicons.lock_closed_outline, true),
       loginButton('Commencer'),
       orDivider(),
       logos(),
     ];
 
     loginContent = [
-      inputField('Email', Ionicons.mail_outline),
-      inputField('Password', Ionicons.lock_closed_outline),
+      inputField('Email', Ionicons.mail_outline, false),
+      inputField('Password', Ionicons.lock_closed_outline, true),
       loginButton('Se Connecter'),
       forgotPassword(),
     ];
