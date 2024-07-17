@@ -31,6 +31,7 @@ class SplashScreenState extends State<SplashScreen> {
   Scaffold buildScreen() {
     return Scaffold(
       body: Container(
+        color: const Color.fromARGB(255, 99, 170, 228),
         child: const Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -38,7 +39,7 @@ class SplashScreenState extends State<SplashScreen> {
             Center(
               child: Text(
                 "Recognize-Text",
-                style: TextStyle(color: Colors.white, fontSize: 30),
+                style: TextStyle(color: Colors.white, fontSize: 40),
                 textAlign: TextAlign.center,
               ),
             )
