@@ -1,5 +1,6 @@
 // ignore_for_file: use_super_parameters
 
+import 'package:animated_music_indicator/animated_music_indicator.dart';
 import 'package:flutter/material.dart' hide BoxShadow, BoxDecoration;
 import 'package:flutter/services.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
@@ -111,11 +112,31 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         child: Icon(
-          Icons.power_settings_new,
+          isDark ? Icons.mic_outlined : Icons.mic_off,
           size: 48,
           color: isDark ? primaryColorLight : primaryColorDark,
         ),
       ),
+    );
+  }
+
+  Widget animateMusic() {
+    return AnimatedMusicIndicator(
+      numberOfBars: 8,
+      size: 0.20,
+      backgroundColor: Colors.transparent,
+      barStyle: BarStyle.dash,
+      roundBars: false,
+      colors: const [
+        Colors.red,
+        Colors.blue,
+        Colors.green,
+        Colors.black,
+        Colors.greenAccent,
+        Colors.purpleAccent,
+        Colors.lightGreen,
+        Colors.lightBlue,
+      ],
     );
   }
 
@@ -134,6 +155,8 @@ class _HomeScreenState extends State<HomeScreen> {
             centerText(),
             const SizedBox(height: 120),
             powerButton(),
+            const SizedBox(height: 36),
+            animateMusic()
           ],
         ),
       ),
