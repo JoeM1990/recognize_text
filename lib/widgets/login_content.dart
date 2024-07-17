@@ -7,6 +7,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:recognize_text/animations/change_screen_animation.dart';
 import 'package:recognize_text/utils/constants.dart';
 import 'package:recognize_text/utils/helper_functions.dart';
+import 'package:recognize_text/views/home/home.dart';
 import 'package:recognize_text/widgets/bottom_text.dart';
 import 'package:recognize_text/widgets/top_text.dart';
 
@@ -99,6 +100,8 @@ class _LoginContentState extends State<LoginContent>
       child: ElevatedButton(
         onPressed: () {
           print("Login compte |${username.text}|${password.text}");
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()));
         },
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 14),
@@ -125,6 +128,8 @@ class _LoginContentState extends State<LoginContent>
       child: ElevatedButton(
         onPressed: () {
           print("New compte |${username.text}|${password.text}");
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()));
         },
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 14),
