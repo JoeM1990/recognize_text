@@ -156,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 120),
             powerButton(),
             const SizedBox(height: 36),
-            animateMusic()
+            isDark ? animateMusic() : const SizedBox()
           ],
         ),
       ),
