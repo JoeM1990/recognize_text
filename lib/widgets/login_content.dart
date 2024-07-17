@@ -188,9 +188,15 @@ class _LoginContentState extends State<LoginContent>
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset('assets/images/facebook.png'),
+          GestureDetector(
+            onTap: () {},
+            child: Image.asset('assets/images/facebook.png'),
+          ),
           const SizedBox(width: 24),
-          Image.asset('assets/images/google.png'),
+          GestureDetector(
+            onTap: () {},
+            child: Image.asset('assets/images/google.png'),
+          )
         ],
       ),
     );
