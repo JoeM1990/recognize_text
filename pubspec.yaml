@@ -16,6 +16,8 @@ dependencies:
   flutter_inset_box_shadow: ^1.0.8
   animated_music_indicator: ^0.0.6
 
+  http: ^1.2.1
+
   cupertino_icons: ^1.0.6
 
 dev_dependencies:
