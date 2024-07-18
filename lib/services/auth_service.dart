@@ -3,6 +3,7 @@ import 'dart:convert';
 // import 'dart:math';
 
 import 'package:http/http.dart' as http;
+import 'package:recognize_text/utils/urlConfig.dart';
 
 class AuthService {
   Future signup(String username, String password) async {
