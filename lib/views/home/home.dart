@@ -126,9 +126,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: GestureDetector(
           onLongPress: isDark
-              ? _speechToText.isNotListening
-                  ? _startListening
-                  : _stopListening
+              ? _isListening
+                  ? _stopListening
+                  : _startListening
               : _stopListening,
           // onLongPressCancel: _stopListening,
           child: Icon(
@@ -195,24 +195,33 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void _initSpeech() async {
-    _speechEnabled = await _speechToText.initialize();
+  void _initializeSpeechRecognizer() async {
+    _isSpeechInitialized = await _speech.initialize(
+      onStatus: (status) => print('onStatus: $status'),
+      onError: (errorNotification) => print('onError: $errorNotification'),
+    );
     setState(() {});
   }
 
   void _startListening() async {
-    await _speechToText.listen(onResult: _onSpeechResult);
-    setState(() {});
+    if (_isSpeechInitialized && !_isListening) {
+      _isListening = true;
+      await _speech.listen(
+        onResult: (result) {
+          setState(() {
+            _text = result.recognizedWords;
+          });
+        },
+      );
+      setState(() {});
+    }
   }
 
   void _stopListening() async {
-    await _speechToText.stop();
-    setState(() {});
-  }
-
-  void _onSpeechResult(SpeechRecognitionResult result) {
-    setState(() {
-      _lastWords = result.recognizedWords;
-    });
+    if (_isListening) {
+      await _speech.stop();
+      _isListening = false;
+      setState(() {});
+    }
   }
 }
