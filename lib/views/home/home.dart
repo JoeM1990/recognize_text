@@ -1,4 +1,4 @@
-// ignore_for_file: use_super_parameters, avoid_print, unused_element, unnecessary_string_interpolations, prefer_const_constructors
+// ignore_for_file: use_super_parameters, avoid_print, unused_element, unnecessary_string_interpolations, prefer_const_constructors, prefer_final_fields
 
 import 'package:animated_music_indicator/animated_music_indicator.dart';
 import 'package:flutter/material.dart' hide BoxShadow, BoxDecoration;
