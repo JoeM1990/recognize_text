@@ -123,10 +123,17 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-        child: Icon(
-          isDark ? Icons.mic_outlined : Icons.mic_off,
-          size: 48,
-          color: isDark ? primaryColorLight : primaryColorDark,
+        child: GestureDetector(
+          onTap: isDark
+              ? _speechToText.isNotListening
+                  ? _startListening
+                  : _stopListening
+              : _stopListening,
+          child: Icon(
+            isDark ? Icons.mic_outlined : Icons.mic_off,
+            size: 48,
+            color: isDark ? primaryColorLight : primaryColorDark,
+          ),
         ),
       ),
     );
