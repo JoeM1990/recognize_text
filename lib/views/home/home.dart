@@ -177,11 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 30),
             isDark
                 ? Text(
-                    _speechToText.isListening
-                        ? '$_lastWords'
-                        : _speechEnabled
-                            ? 'Appuyez sur le microphone pour commencer...'
-                            : 'Discours non disponible',
+                    _text,
                     style: TextStyle(color: Colors.white),
                   )
                 : SizedBox(),
