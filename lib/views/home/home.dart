@@ -1,9 +1,11 @@
-// ignore_for_file: use_super_parameters
+// ignore_for_file: use_super_parameters, avoid_print
 
 import 'package:animated_music_indicator/animated_music_indicator.dart';
 import 'package:flutter/material.dart' hide BoxShadow, BoxDecoration;
 import 'package:flutter/services.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:speech_to_text/speech_recognition_result.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -18,6 +20,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   var isPressed = false;
   var isDark = false;
+
+  SpeechToText _speechToText = SpeechToText();
+  bool _speechEnabled = false;
+  String _lastWords = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _initSpeech();
+  }
 
   Widget dayNight() {
     final positionShadow = isDark ? -40.0 : -210.0;

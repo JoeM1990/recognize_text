@@ -17,6 +17,7 @@ dependencies:
   animated_music_indicator: ^0.0.6
 
   http: ^1.2.1
+  speech_to_text: ^6.6.2
 
   cupertino_icons: ^1.0.6
 
