@@ -1,4 +1,4 @@
-// ignore_for_file: use_super_parameters, avoid_print
+// ignore_for_file: use_super_parameters, avoid_print, unused_element
 
 import 'package:animated_music_indicator/animated_music_indicator.dart';
 import 'package:flutter/material.dart' hide BoxShadow, BoxDecoration;
@@ -173,5 +173,26 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  void _initSpeech() async {
+    _speechEnabled = await _speechToText.initialize();
+    setState(() {});
+  }
+
+  void _startListening() async {
+    await _speechToText.listen(onResult: _onSpeechResult);
+    setState(() {});
+  }
+
+  void _stopListening() async {
+    await _speechToText.stop();
+    setState(() {});
+  }
+
+  void _onSpeechResult(SpeechRecognitionResult result) {
+    setState(() {
+      _lastWords = result.recognizedWords;
+    });
   }
 }
