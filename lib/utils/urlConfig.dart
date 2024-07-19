@@ -3,6 +3,7 @@
 class UrlConfig {
   //Auth
   static const String BASE_URL = 'http://192.168.1.79:9090/';
+
   static const String SIGN_IN = '${BASE_URL}api/auth/signin';
   static const String SIGN_UP = '${BASE_URL}api/auth/signup';
   static const String SIGN_OUT = '${BASE_URL}api/auth/signout';
