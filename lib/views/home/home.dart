@@ -124,11 +124,12 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         child: GestureDetector(
-          onTap: isDark
+          onLongPress: isDark
               ? _speechToText.isNotListening
                   ? _startListening
                   : _stopListening
               : _stopListening,
+          onLongPressCancel: _stopListening,
           child: Icon(
             isDark ? Icons.mic_outlined : Icons.mic_off,
             size: 48,
@@ -178,16 +179,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Container(
                       padding: EdgeInsets.all(16),
                       child: Text(
-                        // If listening is active show the recognized words
                         _speechToText.isListening
                             ? '$_lastWords'
-                            // If listening isn't active but could be tell the user
-                            // how to start it, otherwise indicate that speech
-                            // recognition is not yet ready or not supported on
-                            // the target device
                             : _speechEnabled
                                 ? 'Appuyez sur le microphone pour commencer...'
                                 : 'Discours non disponible',
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
                   )
