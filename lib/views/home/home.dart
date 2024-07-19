@@ -1,4 +1,4 @@
-// ignore_for_file: use_super_parameters, avoid_print, unused_element
+// ignore_for_file: use_super_parameters, avoid_print, unused_element, unnecessary_string_interpolations, prefer_const_constructors
 
 import 'package:animated_music_indicator/animated_music_indicator.dart';
 import 'package:flutter/material.dart' hide BoxShadow, BoxDecoration;
@@ -166,9 +166,28 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 36),
             centerText(),
             const SizedBox(height: 120),
+            isDark
+                ? Expanded(
+                    child: Container(
+                      padding: EdgeInsets.all(16),
+                      child: Text(
+                        // If listening is active show the recognized words
+                        _speechToText.isListening
+                            ? '$_lastWords'
+                            // If listening isn't active but could be tell the user
+                            // how to start it, otherwise indicate that speech
+                            // recognition is not yet ready or not supported on
+                            // the target device
+                            : _speechEnabled
+                                ? 'Appuyez sur le microphone pour commencer...'
+                                : 'Discours non disponible',
+                      ),
+                    ),
+                  )
+                : SizedBox(),
             powerButton(),
             const SizedBox(height: 36),
-            isDark ? animateMusic() : const SizedBox()
+            isDark ? animateMusic() : const SizedBox(),
           ],
         ),
       ),
