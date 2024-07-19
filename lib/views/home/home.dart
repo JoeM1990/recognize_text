@@ -4,8 +4,7 @@ import 'package:animated_music_indicator/animated_music_indicator.dart';
 import 'package:flutter/material.dart' hide BoxShadow, BoxDecoration;
 import 'package:flutter/services.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
-import 'package:speech_to_text/speech_recognition_result.dart';
-import 'package:speech_to_text/speech_to_text.dart';
+import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -21,14 +20,16 @@ class _HomeScreenState extends State<HomeScreen> {
   var isPressed = false;
   var isDark = false;
 
-  SpeechToText _speechToText = SpeechToText();
-  bool _speechEnabled = false;
-  String _lastWords = '';
+  late stt.SpeechToText _speech;
+  bool _isListening = false;
+  bool _isSpeechInitialized = false;
+  String _text = 'Press the button and start speaking';
 
   @override
   void initState() {
     super.initState();
-    _initSpeech();
+    _speech = stt.SpeechToText();
+    _initializeSpeechRecognizer();
   }
 
   Widget dayNight() {
@@ -129,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ? _startListening
                   : _stopListening
               : _stopListening,
-          onLongPressCancel: _stopListening,
+          // onLongPressCancel: _stopListening,
           child: Icon(
             isDark ? Icons.mic_outlined : Icons.mic_off,
             size: 48,
@@ -173,22 +174,18 @@ class _HomeScreenState extends State<HomeScreen> {
             dayNight(),
             const SizedBox(height: 36),
             centerText(),
-            const SizedBox(height: 120),
+            const SizedBox(height: 30),
             isDark
-                ? Expanded(
-                    child: Container(
-                      padding: EdgeInsets.all(16),
-                      child: Text(
-                        _speechToText.isListening
-                            ? '$_lastWords'
-                            : _speechEnabled
-                                ? 'Appuyez sur le microphone pour commencer...'
-                                : 'Discours non disponible',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
+                ? Text(
+                    _speechToText.isListening
+                        ? '$_lastWords'
+                        : _speechEnabled
+                            ? 'Appuyez sur le microphone pour commencer...'
+                            : 'Discours non disponible',
+                    style: TextStyle(color: Colors.white),
                   )
                 : SizedBox(),
+            const SizedBox(height: 30),
             powerButton(),
             const SizedBox(height: 36),
             isDark ? animateMusic() : const SizedBox(),
