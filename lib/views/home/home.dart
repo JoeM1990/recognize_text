@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late stt.SpeechToText _speech;
   bool _isListening = false;
   bool _isSpeechInitialized = false;
-  String _text = 'Press the button and start speaking';
+  String _text = 'start speaking';
 
   @override
   void initState() {
