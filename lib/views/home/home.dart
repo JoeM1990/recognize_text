@@ -130,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ? _stopListening
                   : _startListening
               : _stopListening,
-          // onLongPressCancel: _stopListening,
+          onLongPressCancel: _stopListening,
           child: Icon(
             isDark ? Icons.mic_outlined : Icons.mic_off,
             size: 48,
