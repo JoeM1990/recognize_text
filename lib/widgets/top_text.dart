@@ -43,12 +43,17 @@ class _TopTextState extends State<TopText> {
           Text(
             ChangeScreenAnimation.currentScreen == Screens.createAccount
                 ? ''
-                : 'Recognize text est une application de commande des equipements par la voix',
+                : 'Recognize text est une application \n de commande des equipements \n par la voix',
             style: const TextStyle(
-                fontSize: 10,
+                fontSize: 18,
                 fontWeight: FontWeight.w600,
                 color: Colors.black12),
-          )
+          ),
+          ChangeScreenAnimation.currentScreen == Screens.createAccount
+              ? const SizedBox()
+              : const SizedBox(
+                  height: 45,
+                )
         ],
       ),
     );
