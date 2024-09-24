@@ -99,9 +99,11 @@ class _LoginContentState extends State<LoginContent>
       padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 16),
       child: ElevatedButton(
         onPressed: () {
-          print("Login compte |${username.text}|${password.text}");
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const HomeScreen()));
+          if (username.text.isEmpty && password.text.isEmpty) {
+          } else if (username.text == 'Admin' && password.text == '12345') {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const HomeScreen()));
+          }
         },
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 14),
@@ -127,9 +129,9 @@ class _LoginContentState extends State<LoginContent>
       padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 16),
       child: ElevatedButton(
         onPressed: () {
-          print("New compte |${username.text}|${password.text}");
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const HomeScreen()));
+          // print("New compte |${username.text}|${password.text}");
+          // Navigator.pushReplacement(context,
+          //     MaterialPageRoute(builder: (context) => const HomeScreen()));
         },
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 14),
