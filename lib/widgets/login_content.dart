@@ -111,7 +111,15 @@ class _LoginContentState extends State<LoginContent>
           } else if (username.text == 'Admin' && password.text == '12345') {
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) => const HomeScreen()));
-          } else {}
+          } else {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return ThemeHelper().alertDialog(
+                    "Erreur", "Email ou mot de passe incorrect", context);
+              },
+            );
+          }
         },
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 14),
