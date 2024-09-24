@@ -29,33 +29,29 @@ class _TopTextState extends State<TopText> {
   Widget build(BuildContext context) {
     return HelperFunctions.wrapWithAnimatedBuilder(
       animation: ChangeScreenAnimation.topTextAnimation,
-      child: Column(
-        children: [
-          Text(
-            ChangeScreenAnimation.currentScreen == Screens.createAccount
-                ? 'Nouveau\nCompte'
-                : 'Bienvenue\n',
-            style: const TextStyle(
-              fontSize: 40,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          Text(
-            ChangeScreenAnimation.currentScreen == Screens.createAccount
-                ? ''
-                : 'Recognize text est une application \n de commande des equipements \n par la voix',
-            style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-                color: Colors.black12),
-          ),
-          ChangeScreenAnimation.currentScreen == Screens.createAccount
-              ? const SizedBox()
-              : const SizedBox(
-                  height: 45,
-                )
-        ],
+      child: Text(
+        ChangeScreenAnimation.currentScreen == Screens.createAccount
+            ? 'Nouveau\nCompte'
+            : 'Bienvenue\n Chez Recognize',
+        style: const TextStyle(
+          fontSize: 40,
+          fontWeight: FontWeight.w600,
+        ),
       ),
+      // Text(
+      //   ChangeScreenAnimation.currentScreen == Screens.createAccount
+      //       ? ''
+      //       : 'Recognize text est une application \n de commande des equipements \n par la voix',
+      //   style: const TextStyle(
+      //       fontSize: 18,
+      //       fontWeight: FontWeight.w600,
+      //       color: Colors.black54),
+      // ),
+      // ChangeScreenAnimation.currentScreen == Screens.createAccount
+      //     ? const SizedBox()
+      //     : const SizedBox(
+      //         height: 45,
+      //       )
     );
   }
 }
