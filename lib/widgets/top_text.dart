@@ -1,6 +1,7 @@
 // ignore_for_file: use_super_parameters
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:recognize_text/animations/change_screen_animation.dart';
 import 'package:recognize_text/utils/helper_functions.dart';
 
@@ -33,7 +34,7 @@ class _TopTextState extends State<TopText> {
         ChangeScreenAnimation.currentScreen == Screens.createAccount
             ? 'Nouveau\nCompte'
             : 'Bienvenue\n Chez Recognize',
-        style: const TextStyle(
+        style: GoogleFonts.aBeeZee(
           fontSize: 40,
           fontWeight: FontWeight.w600,
         ),

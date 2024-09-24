@@ -1,6 +1,7 @@
 // ignore_for_file: use_super_parameters
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:recognize_text/animations/change_screen_animation.dart';
 import 'package:recognize_text/utils/constants.dart';
 import 'package:recognize_text/utils/helper_functions.dart';
@@ -45,9 +46,9 @@ class _BottomTextState extends State<BottomText> {
           padding: const EdgeInsets.all(16),
           child: RichText(
             text: TextSpan(
-              style: const TextStyle(
+              style: GoogleFonts.aBeeZee(
                 fontSize: 16,
-                fontFamily: 'Montserrat',
+                // fontFamily: 'Montserrat',
               ),
               children: [
                 TextSpan(
@@ -55,7 +56,7 @@ class _BottomTextState extends State<BottomText> {
                           Screens.createAccount
                       ? 'Vous avez déjà un compte? '
                       : 'Pas de compte? ',
-                  style: const TextStyle(
+                  style: GoogleFonts.aBeeZee(
                     color: kPrimaryColor,
                     fontWeight: FontWeight.w600,
                   ),
@@ -65,7 +66,7 @@ class _BottomTextState extends State<BottomText> {
                           Screens.createAccount
                       ? 'Connexion'
                       : 'Commencer',
-                  style: const TextStyle(
+                  style: GoogleFonts.aBeeZee(
                     color: kSecondaryColor,
                     fontWeight: FontWeight.bold,
                   ),

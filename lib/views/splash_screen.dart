@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:recognize_text/views/auth/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -32,14 +33,14 @@ class SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         color: const Color.fromARGB(255, 99, 170, 228),
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
               child: Text(
                 "Recognize-Text",
-                style: TextStyle(color: Colors.white, fontSize: 40),
+                style: GoogleFonts.aBeeZee(color: Colors.white, fontSize: 40),
                 textAlign: TextAlign.center,
               ),
             )

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recognize_text/utils/constants.dart';
 // import 'package:hexcolor/hexcolor.dart';
 
 class ThemeHelper {
@@ -15,7 +16,7 @@ class ThemeHelper {
       actions: [
         TextButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
+            backgroundColor: MaterialStateProperty.all(kSecondaryColor),
           ),
           onPressed: () {
             Navigator.of(context).pop();

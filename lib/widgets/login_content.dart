@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:recognize_text/animations/change_screen_animation.dart';
 import 'package:recognize_text/utils/constants.dart';
@@ -130,7 +131,7 @@ class _LoginContentState extends State<LoginContent>
         ),
         child: Text(
           title,
-          style: const TextStyle(
+          style: GoogleFonts.aBeeZee(
             color: Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -148,6 +149,13 @@ class _LoginContentState extends State<LoginContent>
           // print("New compte |${username.text}|${password.text}");
           // Navigator.pushReplacement(context,
           //     MaterialPageRoute(builder: (context) => const HomeScreen()));
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return ThemeHelper()
+                  .alertDialog("Erreur", "Erreur du serveur", context);
+            },
+          );
         },
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 14),
@@ -158,7 +166,7 @@ class _LoginContentState extends State<LoginContent>
         ),
         child: Text(
           title,
-          style: const TextStyle(
+          style: GoogleFonts.aBeeZee(
             color: Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -179,11 +187,11 @@ class _LoginContentState extends State<LoginContent>
               color: kPrimaryColor,
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
               'or',
-              style: TextStyle(
+              style: GoogleFonts.aBeeZee(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),
@@ -225,9 +233,9 @@ class _LoginContentState extends State<LoginContent>
       padding: const EdgeInsets.symmetric(horizontal: 80),
       child: TextButton(
         onPressed: () {},
-        child: const Text(
+        child: Text(
           'Mot de passe oublié?',
-          style: TextStyle(
+          style: GoogleFonts.aBeeZee(
             fontSize: 16,
             fontWeight: FontWeight.w600,
             color: kSecondaryColor,
