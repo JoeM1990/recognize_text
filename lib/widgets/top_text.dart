@@ -32,7 +32,7 @@ class _TopTextState extends State<TopText> {
       child: Text(
         ChangeScreenAnimation.currentScreen == Screens.createAccount
             ? 'Nouveau\nCompte'
-            : 'Bienvenue\n',
+            : 'Bienvenue\n Dans Recognize',
         style: const TextStyle(
           fontSize: 40,
           fontWeight: FontWeight.w600,
