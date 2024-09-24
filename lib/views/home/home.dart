@@ -4,6 +4,7 @@ import 'package:animated_music_indicator/animated_music_indicator.dart';
 import 'package:flutter/material.dart' hide BoxShadow, BoxDecoration;
 import 'package:flutter/services.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:recognize_text/utils/theme_helper.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
@@ -179,7 +180,7 @@ class _HomeScreenState extends State<HomeScreen> {
             isDark
                 ? Text(
                     _text,
-                    style: TextStyle(color: Colors.white),
+                    style: GoogleFonts.aBeeZee(color: Colors.white),
                   )
                 : SizedBox(),
             const SizedBox(height: 30),
@@ -206,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
       await _speech.listen(
         onResult: (result) {
           setState(() {
-            _text = result.recognizedWords;
+            // _text = result.recognizedWords;
             print(result.recognizedWords);
             //_initializeSpeechRecognizer();
 
@@ -215,17 +216,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 context: context,
                 builder: (BuildContext context) {
                   return ThemeHelper()
-                      .alertDialog("Success", "Commande effectué", context);
+                      .alertDialog("Success", "Commande effectuée", context);
                 },
               );
+              _initializeSpeechRecognizer();
             } else if (result.recognizedWords == 'Eteindre') {
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
                   return ThemeHelper()
-                      .alertDialog("Success", "Commande effectué", context);
+                      .alertDialog("Success", "Commande effectuée", context);
                 },
               );
+              _initializeSpeechRecognizer();
             } else {
               showDialog(
                 context: context,
@@ -234,6 +237,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       "Erreur", "Veuillez dire le bon mot", context);
                 },
               );
+              _initializeSpeechRecognizer();
             }
           });
         },
