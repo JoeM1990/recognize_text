@@ -4,6 +4,7 @@ import 'package:animated_music_indicator/animated_music_indicator.dart';
 import 'package:flutter/material.dart' hide BoxShadow, BoxDecoration;
 import 'package:flutter/services.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:recognize_text/utils/theme_helper.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 class HomeScreen extends StatefulWidget {
@@ -206,6 +207,34 @@ class _HomeScreenState extends State<HomeScreen> {
         onResult: (result) {
           setState(() {
             _text = result.recognizedWords;
+            print(result.recognizedWords);
+            //_initializeSpeechRecognizer();
+
+            if (result.recognizedWords == 'Allumer') {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return ThemeHelper()
+                      .alertDialog("Success", "Commande effectué", context);
+                },
+              );
+            } else if (result.recognizedWords == 'Eteindre') {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return ThemeHelper()
+                      .alertDialog("Success", "Commande effectué", context);
+                },
+              );
+            } else {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return ThemeHelper().alertDialog(
+                      "Erreur", "Veuillez dire le bon mot", context);
+                },
+              );
+            }
           });
         },
       );
