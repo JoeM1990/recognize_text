@@ -96,7 +96,7 @@ class _LoginContentState extends State<LoginContent>
 
   Widget loginButton(String title) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 16),
       child: ElevatedButton(
         onPressed: () {
           print("Login compte |${username.text}|${password.text}");
@@ -204,7 +204,7 @@ class _LoginContentState extends State<LoginContent>
 
   Widget forgotPassword() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 110),
+      padding: const EdgeInsets.symmetric(horizontal: 80),
       child: TextButton(
         onPressed: () {},
         child: const Text(
