@@ -124,7 +124,7 @@ class _LoginContentState extends State<LoginContent>
 
   Widget createButton(String title) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 16),
       child: ElevatedButton(
         onPressed: () {
           print("New compte |${username.text}|${password.text}");
