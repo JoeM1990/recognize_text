@@ -29,14 +29,27 @@ class _TopTextState extends State<TopText> {
   Widget build(BuildContext context) {
     return HelperFunctions.wrapWithAnimatedBuilder(
       animation: ChangeScreenAnimation.topTextAnimation,
-      child: Text(
-        ChangeScreenAnimation.currentScreen == Screens.createAccount
-            ? 'Nouveau\nCompte'
-            : 'Bienvenue\n Dans Recognize',
-        style: const TextStyle(
-          fontSize: 40,
-          fontWeight: FontWeight.w600,
-        ),
+      child: Column(
+        children: [
+          Text(
+            ChangeScreenAnimation.currentScreen == Screens.createAccount
+                ? 'Nouveau\nCompte'
+                : 'Bienvenue\n',
+            style: const TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          Text(
+            ChangeScreenAnimation.currentScreen == Screens.createAccount
+                ? ''
+                : 'Recognize text est une application de commande des equipements par la voix',
+            style: const TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.w600,
+                color: Colors.black12),
+          )
+        ],
       ),
     );
   }
