@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:animated_music_indicator/animated_music_indicator.dart';
 import 'package:flutter/material.dart' hide BoxShadow, BoxDecoration;
 import 'package:flutter/services.dart';
@@ -6,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -22,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late stt.SpeechToText _speech;
   bool _isListening = false;
   bool _isSpeechInitialized = false;
-  String _text = 'Press the button and start speaking';
+  final String _text = 'Press the button and start speaking';
 
   late AnimationController _animationController;
 
@@ -35,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     // Animation Controller for smooth transitions
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
     );
   }
 
@@ -88,17 +90,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 
   Widget centerText() {
-    return FadeTransition(
-      opacity: _animationController,
-      child: Text(
-        isDark ? 'Parler...\n' : 'Toucher pour\nParler',
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontFamily: 'Montserrat',
-          fontSize: 44,
-          fontWeight: FontWeight.bold,
-          color: isDark ? Colors.white : Colors.black,
-        ),
+    return Text(
+      isDark ? 'Parler...\n' : 'Toucher pour\nParler',
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 44,
+        fontWeight: FontWeight.bold,
+        color: isDark ? Colors.white : Colors.black,
       ),
     );
   }
@@ -124,8 +123,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ),
         );
       }),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 100),
+      child: Container(
         width: 140,
         height: 140,
         decoration: BoxDecoration(
@@ -202,7 +200,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     _text,
                     style: GoogleFonts.aBeeZee(color: Colors.white),
                   )
-                : SizedBox(),
+                : const SizedBox(),
             const SizedBox(height: 30),
             powerButton(),
             const SizedBox(height: 36),
@@ -262,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           content: Text(message),
           actions: <Widget>[
             TextButton(
-              child: Text("OK"),
+              child: const Text("OK"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
