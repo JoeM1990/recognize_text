@@ -97,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           fontFamily: 'Montserrat',
           fontSize: 44,
           fontWeight: FontWeight.bold,
-          color: isDark ? primaryColorLight : primaryColorDark,
+          color: isDark ? Colors.white : Colors.black,
         ),
       ),
     );
