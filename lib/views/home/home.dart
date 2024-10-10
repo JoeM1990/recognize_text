@@ -1,11 +1,8 @@
-// ignore_for_file: use_super_parameters, avoid_print, unused_element, unnecessary_string_interpolations, prefer_const_constructors, prefer_final_fields
-
 import 'package:animated_music_indicator/animated_music_indicator.dart';
 import 'package:flutter/material.dart' hide BoxShadow, BoxDecoration;
 import 'package:flutter/services.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:recognize_text/utils/theme_helper.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 class HomeScreen extends StatefulWidget {
@@ -15,7 +12,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   final primaryColorLight = const Color(0xFFD8E0ED);
   final primaryColorDark = const Color(0xFF2E3243);
 
@@ -27,11 +24,25 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _isSpeechInitialized = false;
   String _text = 'Press the button and start speaking';
 
+  late AnimationController _animationController;
+
   @override
   void initState() {
     super.initState();
     _speech = stt.SpeechToText();
     _initializeSpeechRecognizer();
+
+    // Animation Controller for smooth transitions
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 500),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   Widget dayNight() {
@@ -77,14 +88,17 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget centerText() {
-    return Text(
-      isDark ? 'Parler...\n' : 'Toucher pour\nParler',
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        fontFamily: 'Montserrat',
-        fontSize: 44,
-        fontWeight: FontWeight.bold,
-        color: isDark ? primaryColorLight : primaryColorDark,
+    return FadeTransition(
+      opacity: _animationController,
+      child: Text(
+        isDark ? 'Parler...\n' : 'Toucher pour\nParler',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontFamily: 'Montserrat',
+          fontSize: 44,
+          fontWeight: FontWeight.bold,
+          color: isDark ? primaryColorLight : primaryColorDark,
+        ),
       ),
     );
   }
@@ -97,6 +111,12 @@ class _HomeScreenState extends State<HomeScreen> {
       onPointerUp: (_) => setState(() {
         isPressed = false;
         isDark = !isDark;
+
+        if (isDark) {
+          _animationController.forward();
+        } else {
+          _animationController.reverse();
+        }
 
         SystemChrome.setSystemUIOverlayStyle(
           SystemUiOverlayStyle(
@@ -207,42 +227,22 @@ class _HomeScreenState extends State<HomeScreen> {
       await _speech.listen(
         onResult: (result) {
           setState(() {
-            // _text = result.recognizedWords;
-            print(result.recognizedWords);
-            //_initializeSpeechRecognizer();
+            String command = result.recognizedWords.toLowerCase();
+            print(command);
 
-            if (result.recognizedWords == 'Allumer') {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return ThemeHelper()
-                      .alertDialog("Success", "Commande effectuée", context);
-                },
-              );
-              _initializeSpeechRecognizer();
-            } else if (result.recognizedWords == 'Eteindre') {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return ThemeHelper()
-                      .alertDialog("Success", "Commande effectuée", context);
-                },
-              );
-              _initializeSpeechRecognizer();
+            if (command == 'allumer') {
+              _showDialog("Success", "Commande effectuée");
+            } else if (command == 'eteindre') {
+              _showDialog("Success", "Commande effectuée");
             } else {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return ThemeHelper().alertDialog(
-                      "Erreur", "Veuillez dire le bon mot", context);
-                },
+              _showDialog(
+                "Erreur",
+                "Commande non effectuée : La commande n'existe pas",
               );
-              _initializeSpeechRecognizer();
             }
           });
         },
       );
-      setState(() {});
     }
   }
 
@@ -250,7 +250,26 @@ class _HomeScreenState extends State<HomeScreen> {
     if (_isListening) {
       await _speech.stop();
       _isListening = false;
-      setState(() {});
     }
+  }
+
+  void _showDialog(String title, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
