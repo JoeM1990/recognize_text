@@ -232,7 +232,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
             if (command == 'allumer') {
               _showDialog("Success", "Commande effectuée");
-            } else if (command == 'eteindre') {
+            } else if (command == 'éteindre') {
               _showDialog("Success", "Commande effectuée");
             } else {
               _showDialog(
